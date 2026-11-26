@@ -1,0 +1,27 @@
+name: Release Android APK
+# Push a tag like v0.1.0 to build an APK with EAS and attach it to a GitHub Release.
+# Requires the repository secret EXPO_TOKEN (create one at expo.dev -> Access tokens).
+on:
+  push:
+    tags: ['v*']
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - uses: expo/expo-github-action@v8
+        with: { eas-version: latest, token: '${{ secrets.EXPO_TOKEN }}' }
+      - run: npm ci
+      - name: Build APK (EAS cloud)
+        working-directory: app
+        run: eas build --platform android --profile preview --non-interactive --wait --json > build.json
+      - name: Download APK
+        working-directory: app
+        run: |
+          URL=$(node -e "console.log(JSON.parse(require('fs').readFileSync('build.json'))[0].artifacts.buildUrl)")
+          curl -L "$URL" -o spaced-cards-${GITHUB_REF_NAME}.apk
+      - uses: softprops/action-gh-release@v2
+        with: { files: 'app/spaced-cards-*.apk' }

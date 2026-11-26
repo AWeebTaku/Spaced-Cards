@@ -1,0 +1,17 @@
+{
+  "name": "spaced-cards",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "app"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build:web": "npm run build:web -w @spaced/app",
+    "e2e:web": "npm run build:web && node scripts/screenshots.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.18.1"
+  }
+}

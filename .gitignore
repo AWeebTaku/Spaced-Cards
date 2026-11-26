@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.expo/
+*.log
+.claude_session
+app/android/
+app/ios/
+release/
