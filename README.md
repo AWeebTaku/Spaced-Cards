@@ -1,5 +1,9 @@
 # Spaced Cards
 
+<!-- badges:start -->
+[![CI](https://github.com/AWeebTaku/Spaced-Cards/actions/workflows/ci.yml/badge.svg)](https://github.com/AWeebTaku/Spaced-Cards/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/AWeebTaku/Spaced-Cards/blob/main/LICENSE) ![React Native](https://img.shields.io/badge/React%20Native-20232A?logo=react&logoColor=white) ![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) ![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Web-lightgrey)
+<!-- badges:end -->
+
 A small, local-first flashcard app for Android, iOS and the web, built with React Native (Expo) and TypeScript. It schedules reviews with **FSRS**, the modern open spaced-repetition algorithm, and keeps all data on the device in SQLite.
 
 | Home | Review | Stats |
